@@ -89,7 +89,7 @@ X_test = np.reshape(X_test, (X_test.shape[0],X_test.shape[1],1))
 prediccion = modelo.predict(X_test)
 prediccion = sc.inverse_transform(prediccion)
 
-# Graficar resultados
+# AngelGraficar resultados
 graficar_predicciones(set_validacion.values,prediccion)
 
 
