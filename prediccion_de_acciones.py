@@ -3,6 +3,8 @@ np.random.seed(4)
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from keras.models import Model
+from keras.utils import to_categorical
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
@@ -67,10 +69,12 @@ dim_entrada = (X_train.shape[1],1)
 dim_salida = 1
 na = 50
 
+
+
 modelo = Sequential()
 modelo.add(LSTM(units=na, input_shape=dim_entrada))
 modelo.add(Dense(units=dim_salida))
-modelo.compile(optimizer='rmsprop', loss='mse')
+modelo.compile(optimizer='adam', loss='mean_squared_error')
 modelo.fit(X_train,Y_train,epochs=20,batch_size=32)
 
 
